@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
 
 export const Switcher = () => {
     const [mounted, setMounted] = useState(false);
@@ -17,6 +19,6 @@ export const Switcher = () => {
     return (
         <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        >Dark Mode</button>
+        ><FontAwesomeIcon icon={faMoon} />Dark Mode</button>
     );
 };

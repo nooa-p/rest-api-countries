@@ -19,12 +19,14 @@ const Home = () => {
 
   return (
     <>
-    <header>
-      <h1>Where in the world?</h1>
+    <header className='w-full flex bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white p-5 justify-between'>
+      <h1 className='font-extrabold text-xl ml-10'>
+        Where in the world?
+      </h1>
       <Switcher />
     </header>
     <main>
-      
+
     </main>
     </>
   );
