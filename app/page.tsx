@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { Switcher } from './switcher';
 
 const Home = () => {
 /*   const [data, setData] = useState(null);
@@ -17,7 +18,15 @@ const Home = () => {
 // if(isLoading) return <p>Loading...</p>
 
   return (
-    <h1>Hello</h1>
+    <>
+    <header>
+      <h1>Where in the world?</h1>
+      <Switcher />
+    </header>
+    <main>
+      
+    </main>
+    </>
   );
 } 
 
