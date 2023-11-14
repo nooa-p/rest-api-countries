@@ -19,7 +19,7 @@ export default function RootLayout({
     return (
       <html lang="en" suppressHydrationWarning>
         <body className={`${nunito.className} bg-[#FAFAFA] dark:bg-[#202C37]`}>
-          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
             <Switcher />
           {children}
           </ThemeProvider>
