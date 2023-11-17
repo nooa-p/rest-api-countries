@@ -20,6 +20,12 @@ const Home = () => {
 
   // if(isLoading) return <p>Loading...</p>
 
+  // const keys = Object.keys(data);
+  // console.log(keys);
+  // keys.forEach((key) => {
+  //   console.log(data[key]);
+  // });
+
   return (
     <>
     <header className='w-full flex bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white p-5 justify-between'>
@@ -29,7 +35,7 @@ const Home = () => {
       <Switcher />
     </header>
     <main className='mx-2 md:mx-16 p-5'>
-      <div className=''>
+      <div>
         <form action="">
           <input type="text" name="" id="" placeholder='Search for a country...'/>
           <select name="" id="">
@@ -38,10 +44,25 @@ const Home = () => {
             <option value="asia">Asia</option>
             <option value="europe">Europe</option>
             <option value="oceania">Oceania</option>
+            <option value=''></option>
           </select>
         </form>
       </div>
-      <div>content</div>
+      <div className='flex md:flex-wrap justify-center md:justify-between flex-col md:flex-row mx-auto flex-none basis-full md:basis-72'>
+        {Object.keys(data).map(key => {
+          return (
+            <div key={key} className=''>
+              {/* <div className=`bg-[url('${data[key].flags.png}')]`> */}
+              {/* </div> */}
+              <div>
+                {data[key].name.common}
+                {data[key].population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                {data[key].region}
+                {data[key].capital}
+              </div>
+            </div>
+          )})}
+      </div>
     </main>
     </>
   );
