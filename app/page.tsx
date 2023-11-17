@@ -1,23 +1,22 @@
 'use client';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Switcher } from './switcher';
+import data from '../json/all.json';
 
 const Home = () => {
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(true);
+  // const [data, setData] = useState(null);
+  // const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // fetch from api, switched to local file at least as long as developing the site
-    // fetch('https://restcountries.com/v3.1/all')
-    fetch('./all.json')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      })
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://restcountries.com/v3.1/all')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data);
+  //       setLoading(false);
+  //     })
+  // }, []);
 
-// if(isLoading) return <p>Loading...</p>
+  // if(isLoading) return <p>Loading...</p>
 
   return (
     <>
@@ -28,7 +27,7 @@ const Home = () => {
       <Switcher />
     </header>
     <main>
-
+      <p>{data[0].region}</p>
     </main>
     </>
   );
