@@ -19,6 +19,7 @@ export const Switcher = () => {
     return (
         <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        ><FontAwesomeIcon icon={faMoon} />Dark Mode</button>
+            className='mr-2 md:mr-16 flex justify-center items-center'
+        ><FontAwesomeIcon icon={faMoon} className='mr-2' />Dark Mode</button>
     );
 };
