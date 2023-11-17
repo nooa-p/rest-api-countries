@@ -3,17 +3,19 @@ import { useState, useEffect } from 'react';
 import { Switcher } from './switcher';
 
 const Home = () => {
-/*   const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://restcountries.com/v3.1/all')
+    // fetch from api, switched to local file at least as long as developing the site
+    // fetch('https://restcountries.com/v3.1/all')
+    fetch('./all.json')
       .then((res) => res.json())
       .then((data) => {
         setData(data);
         setLoading(false);
       })
-  }, []); */
+  }, []);
 
 // if(isLoading) return <p>Loading...</p>
 
