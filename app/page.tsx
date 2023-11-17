@@ -44,28 +44,28 @@ const Home = () => {
             <option value="asia">Asia</option>
             <option value="europe">Europe</option>
             <option value="oceania">Oceania</option>
-            <option value=''></option>
           </select>
         </form>
       </div>
-      <div className='flex md:flex-wrap justify-center md:justify-between flex-col md:flex-row mx-auto flex-none basis-full md:basis-72'>
+      <div className='flex md:flex-wrap justify-center md:justify-between flex-col md:flex-row mx-auto flex-none basis-full md:basis-72 items-center mt-10 gap-y-5'>
         {Object.keys(data).map(key => {
           return (
             <div key={key} className=''>
-              {/* <div className=`bg-[url('${data[key].flags.png}')]`> */}
-              {/* </div> */}
-              <div>
-                {data[key].name.common}
-                {data[key].population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                {data[key].region}
-                {data[key].capital}
+              <div className='w-72'>
+                <img src={data[key].flags.png} className="rounded-t" />
+              </div>
+              <div className='bg-white dark:bg-[#2B3945] w-72 rounded-b'>
+                <h2>{data[key].name.common}</h2>
+                <span>Population:</span> {data[key].population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<br />
+                <span>Region:</span> {data[key].region}<br />
+                <span>Capital:</span> {data[key].capital}<br />
               </div>
             </div>
           )})}
       </div>
     </main>
     </>
-  );
+  )
 } 
 
 export default Home;
