@@ -5,6 +5,7 @@ import { Switcher } from "./switcher";
 import data from "../json/all.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import Link from 'next/link';
 
 const Home = () => {
   // fetching from api
@@ -108,7 +109,7 @@ const Home = () => {
                 </div>
                 <div className="bg-white dark:bg-[#2B3945] w-72 rounded-b p-5 object-cover h-[164px]">
                   <h2 className="font-bold text-base pb-4">
-                    {filtered[key].name.common}
+                    <Link href={`${filtered[key].cca3}`}>{filtered[key].name.common}</Link>
                   </h2>
                   <span className="font-semibold">Population:</span>{" "}
                   <span className="font-light">
