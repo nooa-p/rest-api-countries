@@ -3,6 +3,8 @@
 import { Switcher } from './switcher';
 // fetching from local file
 import data from '../json/all.json';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   // fetching from api
@@ -34,11 +36,15 @@ const Home = () => {
       </h1>
       <Switcher />
     </header>
-    <main className='mx-2 md:mx-16 p-5'>
+    <main className='mx-2 md:mx-16 p-5 text-sm'>
       <div>
-        <form action="">
-          <input type="text" name="" id="" placeholder='Search for a country...'/>
-          <select name="" id="">
+        <form action="" className='flex-col md:flex-row flex justify-between'>
+          <div className='md:basis-2/3'>
+        <FontAwesomeIcon icon={faMagnifyingGlass} className='z-20 relative ml-8'/>
+          <input type="text" name="" id="" placeholder='Search for a country...' className='bg-white dark:bg-[#2B3945] p-3.5 pl-20 -ml-[46px] z-0 relative w-full md:w-2/3 rounded md:max-w-[450px] placeholder:text-[#111517] placeholder:dark:text-white shadow'/>
+          </div>
+          <select name="" id="" className='bg-white dark:bg-[#2B3945] rounded p-3.5 shadow'>
+            <option value="" disabled selected hidden>Filter by Region</option>
             <option value="africa">Africa</option>
             <option value="america">America</option>
             <option value="asia">Asia</option>
@@ -50,7 +56,7 @@ const Home = () => {
       <div className='flex md:flex-wrap justify-center md:justify-between flex-col md:flex-row mx-auto flex-none basis-full md:basis-72 items-center mt-10 gap-y-5'>
         {Object.keys(data).map(key => {
           return (
-            <div key={key} className=''>
+            <div key={key} className='shadow'>
               <div className='w-72'>
                 <img src={data[key].flags.png} className="rounded-t" />
               </div>
