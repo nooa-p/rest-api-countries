@@ -38,13 +38,13 @@ const Home = () => {
     </header>
     <main className='mx-2 md:mx-16 p-5 text-sm'>
       <div>
-        <form action="" className='flex-col md:flex-row flex justify-between'>
+        <form action="" className='flex-col md:flex-row flex justify-between gap-3 md:gap-0'>
           <div className='md:basis-2/3'>
         <FontAwesomeIcon icon={faMagnifyingGlass} className='z-20 relative ml-8'/>
           <input type="text" name="" id="" placeholder='Search for a country...' className='bg-white dark:bg-[#2B3945] p-3.5 pl-20 -ml-[46px] z-0 relative w-full md:w-2/3 rounded md:max-w-[450px] placeholder:text-[#111517] placeholder:dark:text-white shadow'/>
           </div>
-          <select name="" id="" className='bg-white dark:bg-[#2B3945] rounded p-3.5 shadow'>
-            <option value="" disabled selected hidden>Filter by Region</option>
+          <select name="" id="" className='bg-white dark:bg-[#2B3945] rounded py-3.5 pl-5 pr-10 shadow' defaultValue='default'>
+            <option value="default">Filter by Region</option>
             <option value="africa">Africa</option>
             <option value="america">America</option>
             <option value="asia">Asia</option>
