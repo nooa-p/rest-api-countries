@@ -9,6 +9,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 const Home = () => {
   // fetching from api
   const [search, setSearch] = useState("");
+  const [rFilter, setRFilter] = useState("");
   // const [isLoading, setLoading] = useState(true);
 
   // useEffect(() => {
@@ -19,6 +20,14 @@ const Home = () => {
   //       setLoading(false);
   //     })
   // }, []);
+
+  const searchFilter = (array) => {
+    return array.filter(
+      (el) => el.name.common.toLowerCase().includes(search)
+    )
+  }
+
+  const filtered = searchFilter(data);
 
   // if(isLoading) return <p>Loading...</p>
 
@@ -52,6 +61,7 @@ const Home = () => {
                 name=""
                 id=""
                 placeholder="Search for a country..."
+                onChange={(e) => setSearch(e.target.value)}
                 className="bg-white dark:bg-[#2B3945] p-3.5 pl-20 -ml-[46px] z-0 relative w-full md:w-2/3 rounded md:max-w-[450px] placeholder:text-[#111517] placeholder:dark:text-white shadow"
               />
             </div>
@@ -71,31 +81,31 @@ const Home = () => {
           </form>
         </div>
         <div className="flex md:flex-wrap justify-center md:justify-between flex-col md:flex-row mx-auto flex-none basis-full md:basis-72 items-center mt-10 gap-y-10 gap-x-2">
-          {Object.keys(data).map((key) => {
+          {Object.keys(filtered).map((key) => {
             return (
-              <div key={key} className="shadow">
+              <div key={key} className="shadow min-h-[326px]">
                 <div className="w-72 aspect-w-16 aspect-h-9">
                   <img
-                    src={data[key].flags.png}
+                    src={filtered[key].flags.png}
                     className="rounded-t object-fill"
                   />
                 </div>
-                <div className="bg-white dark:bg-[#2B3945] w-72 rounded-b p-5 pb-10">
+                <div className="bg-white dark:bg-[#2B3945] w-72 rounded-b p-5 object-cover h-[164px]">
                   <h2 className="font-bold text-base pb-4">
-                    {data[key].name.common}
+                    {filtered[key].name.common}
                   </h2>
                   <span className="font-semibold">Population:</span>{" "}
                   <span className="font-light">
-                    {data[key].population
+                    {filtered[key].population
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   </span>
                   <br />
                   <span className="font-semibold">Region:</span>{" "}
-                  <span className="font-light">{data[key].region}</span>
+                  <span className="font-light">{filtered[key].region}</span>
                   <br />
                   <span className="font-semibold">Capital:</span>{" "}
-                  <span className="font-light">{data[key].capital}</span>
+                  <span className="font-light">{filtered[key].capital}</span>
                   <br />
                 </div>
               </div>
