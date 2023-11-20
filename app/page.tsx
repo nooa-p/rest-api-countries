@@ -60,11 +60,11 @@ const Home = () => {
               <div className='w-72'>
                 <img src={data[key].flags.png} className="rounded-t" />
               </div>
-              <div className='bg-white dark:bg-[#2B3945] w-72 rounded-b'>
-                <h2>{data[key].name.common}</h2>
-                <span>Population:</span> {data[key].population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}<br />
-                <span>Region:</span> {data[key].region}<br />
-                <span>Capital:</span> {data[key].capital}<br />
+              <div className='bg-white dark:bg-[#2B3945] w-72 rounded-b p-5 pb-10'>
+                <h2 className='font-bold text-base pb-4'>{data[key].name.common}</h2>
+                <span className='font-semibold'>Population:</span> <span className='font-light'>{data[key].population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span><br />
+                <span className='font-semibold'>Region:</span> <span className='font-light'>{data[key].region}</span><br />
+                <span className='font-semibold'>Capital:</span> <span className='font-light'>{data[key].capital}</span><br />
               </div>
             </div>
           )})}
