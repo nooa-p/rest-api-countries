@@ -22,9 +22,24 @@ const Home = () => {
   // }, []);
 
   const searchFilter = (array) => {
-    return array.filter(
-      (el) => el.name.common.toLowerCase().includes(search)
-    )
+    if (search !== "" && rFilter !== "") {
+      const temporary = array.filter(
+        (el) => el.region.includes(rFilter)
+      );
+      return temporary.filter(
+        (el) => el.name.common.toLowerCase().includes(search) 
+      )
+    } else if (search !== "") {
+      return array.filter(
+        (el) => el.name.common.toLowerCase().includes(search)
+        )
+    } else if (rFilter !== "") {
+      return array.filter(
+        (el) => el.region.includes(rFilter)
+      )
+    } else {
+      return data;
+    }
   }
 
   const filtered = searchFilter(data);
@@ -69,14 +84,15 @@ const Home = () => {
               name=""
               id=""
               className="bg-white dark:bg-[#2B3945] rounded py-3.5 pl-5 pr-10 shadow"
-              defaultValue="default"
+              defaultValue=""
+              onChange={(e) => setRFilter(e.target.value)}
             >
-              <option value="default">Filter by Region</option>
-              <option value="africa">Africa</option>
-              <option value="america">America</option>
-              <option value="asia">Asia</option>
-              <option value="europe">Europe</option>
-              <option value="oceania">Oceania</option>
+              <option value="">Filter by Region</option>
+              <option value="Africa">Africa</option>
+              <option value="Americas">America</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europe</option>
+              <option value="Oceania">Oceania</option>
             </select>
           </form>
         </div>
