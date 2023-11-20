@@ -53,12 +53,12 @@ const Home = () => {
           </select>
         </form>
       </div>
-      <div className='flex md:flex-wrap justify-center md:justify-between flex-col md:flex-row mx-auto flex-none basis-full md:basis-72 items-center mt-10 gap-y-5'>
+      <div className='flex md:flex-wrap justify-center md:justify-between flex-col md:flex-row mx-auto flex-none basis-full md:basis-72 items-center mt-10 gap-y-10 gap-x-2'>
         {Object.keys(data).map(key => {
           return (
             <div key={key} className='shadow'>
-              <div className='w-72'>
-                <img src={data[key].flags.png} className="rounded-t" />
+              <div className='w-72 aspect-w-16 aspect-h-9'>
+                <img src={data[key].flags.png} className="rounded-t object-fill" />
               </div>
               <div className='bg-white dark:bg-[#2B3945] w-72 rounded-b p-5 pb-10'>
                 <h2 className='font-bold text-base pb-4'>{data[key].name.common}</h2>
@@ -74,4 +74,4 @@ const Home = () => {
   )
 } 
 
-export default Home;
+export default Home
