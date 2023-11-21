@@ -77,7 +77,7 @@ const Home = () => {
                 name=""
                 id=""
                 placeholder="Search for a country..."
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => setSearch(e.target.value.toLowerCase())}
                 className="bg-white dark:bg-[#2B3945] p-3.5 pl-20 -ml-[46px] z-0 relative w-full md:w-2/3 rounded md:max-w-[450px] placeholder:text-[#111517] placeholder:dark:text-white shadow focus:outline-none"
               />
             </div>
