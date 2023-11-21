@@ -61,7 +61,7 @@ const Home = () => {
         </h1>
         <Switcher />
       </header>
-      <main className="mx-2 md:mx-16 p-5 text-sm">
+      <main className="mx-2 md:mx-16 p-5 text-sm text-[#111517] dark:text-white">
         <div>
           <form
             action=""

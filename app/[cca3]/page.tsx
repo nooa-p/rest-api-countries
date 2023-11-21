@@ -3,10 +3,7 @@ import { Switcher } from "../switcher";
 // fetching from local file
 import data from "../../json/all.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeft,
-  faFilterCircleDollar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 function Page({ params }: { params: { cca3: string } }) {
@@ -102,12 +99,12 @@ function Page({ params }: { params: { cca3: string } }) {
         </h1>
         <Switcher />
       </header>
-      <main className="mx-2 md:mx-16 p-5 text-sm">
+      <main className="mx-2 md:mx-16 p-5 text-sm text-[#111517] dark:text-white">
         <div>
           <FontAwesomeIcon icon={faArrowLeft} />
-          <Link href="/">Back</Link>
+          <Link href="/" className="block-inline bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white py-1.5 px-10">Back</Link>
         </div>
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row mt-20">
           <div className="md:basis-1/2">
             <img src={filtered[0].flags.svg} alt="" />
           </div>
