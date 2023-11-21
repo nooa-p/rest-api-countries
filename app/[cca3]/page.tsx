@@ -74,14 +74,14 @@ function Page({ params }: { params: { cca3: string } }) {
       if (temporary4.length > 1) {
         return Object.values(filtered[0].borders).map((name, index) => {
           return (
-            <Link key={index} href={Object.values(filtered[0].borders)[index]} className="inline-block">
+            <Link key={index} href={Object.values(filtered[0].borders)[index]} className="inline-block bg-white dark:bg-[#2B3945] px-5 py-1 mr-3 shadow-lg mt-3 md:mt-0">
               {Object.values(filtered[0].borders)[index]}
             </Link>
           );
         });
       } else {
         return (
-          <Link href={Object.values(filtered[0].borders)[0]}>
+          <Link href={Object.values(filtered[0].borders)[0]} className="inline-block bg-white dark:bg-[#2B3945] px-5 py-1 mr-3 shadow-lg mt-3 md:mt-0">
             {Object.values(filtered[0].borders)[0]}
           </Link>
         );
@@ -109,7 +109,7 @@ function Page({ params }: { params: { cca3: string } }) {
             <img src={filtered[0].flags.svg} alt="" />
           </div>
           <div className="md:basis-1/2">
-            <h1 className="text-2xl font-extrabold mb-6">{filtered[0].name.common}</h1>
+            <h1 className="text-2xl font-extrabold mb-6 mt-10 md:mt-0">{filtered[0].name.common}</h1>
             <div className="flex flex-col md:flex-row gap-3 md:justify-between">
               <ul>
                 <li>
@@ -153,7 +153,7 @@ function Page({ params }: { params: { cca3: string } }) {
               </ul>
             </div>
             <div className="mt-10">
-              <span className="font-semibold block md:inline-block">Border Countries:</span>{" "}
+              <span className="font-semibold block md:inline-block md:mr-3">Border Countries:</span>{" "}
               <Neighbours />
             </div>
           </div>

@@ -47,12 +47,6 @@ const Home = () => {
 
   // if(isLoading) return <p>Loading...</p>
 
-  // const keys = Object.keys(data);
-  // console.log(keys);
-  // keys.forEach((key) => {
-  //   console.log(data[key]);
-  // });
-
   return (
     <>
       <header className="w-full flex bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white p-5 justify-between shadow-md">
