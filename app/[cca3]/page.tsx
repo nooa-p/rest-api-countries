@@ -33,6 +33,18 @@ function Page({ params }: { params : { cca3: string }}) {
         }
     }
 
+    function Languages() {
+        const temporary3= Object.keys(filtered[0].languages);
+        if (temporary3.length > 1) {
+            return (
+                Object.values(filtered[0].languages).map((name, index) => {
+                    return <span key={index} className="font-light">{(index ? ', ' : '') + Object.values(filtered[0].languages)[index]}</span>
+                }))
+        } else {
+            return <span className="font-light">{Object.values(filtered[0].languages)[0]}</span>;
+        }
+    }
+
     return (
         <>
         <header className="w-full flex bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white p-5 justify-between shadow-md">
@@ -67,7 +79,7 @@ function Page({ params }: { params : { cca3: string }}) {
                     <li><span className="font-semibold">Top Level Domain:</span> <span className="font-light">{filtered[0].tld}</span></li>
                     <li><span className="font-semibold">Currencies:</span> <Currencies />
                         </li>
-                    <li><span className="font-semibold">Languages:</span> <span className="font-light"></span></li>
+                    <li><span className="font-semibold">Languages:</span> <Languages /></li>
                     </ul>
                 </div>
                 <div>
