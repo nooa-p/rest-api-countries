@@ -74,7 +74,7 @@ function Page({ params }: { params: { cca3: string } }) {
       if (temporary4.length > 1) {
         return Object.values(filtered[0].borders).map((name, index) => {
           return (
-            <Link key={index} href={Object.values(filtered[0].borders)[index]}>
+            <Link key={index} href={Object.values(filtered[0].borders)[index]} className="inline-block">
               {Object.values(filtered[0].borders)[index]}
             </Link>
           );
@@ -104,20 +104,20 @@ function Page({ params }: { params: { cca3: string } }) {
           <FontAwesomeIcon icon={faArrowLeft} className="relative z-10 ml-8" />
           <Link href="/" className="block-inline bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white py-[8px] pl-[50px] pr-10 relative z-0 -ml-[45px] rounded shadow-md">Back</Link>
         </div>
-        <div className="flex flex-col md:flex-row mt-20">
+        <div className="flex flex-col md:flex-row mt-20 gap-x-20 items-start md:items-center">
           <div className="md:basis-1/2">
             <img src={filtered[0].flags.svg} alt="" />
           </div>
           <div className="md:basis-1/2">
-            <h1>{filtered[0].name.common}</h1>
-            <div className="flex flex-col md:flex-row">
+            <h1 className="text-2xl font-extrabold mb-6">{filtered[0].name.common}</h1>
+            <div className="flex flex-col md:flex-row gap-3 md:justify-between">
               <ul>
                 <li>
-                  <span className="font-semibold">Native Names:</span>{" "}
+                  <span className="font-semibold inline-block mb-2">Native Names:</span>{" "}
                   <NativeNames />
                 </li>
                 <li>
-                  <span className="font-semibold">Population:</span>{" "}
+                  <span className="font-semibold inline-block mb-2">Population:</span>{" "}
                   <span className="font-light">
                     {filtered[0].population
                       .toString()
@@ -125,35 +125,35 @@ function Page({ params }: { params: { cca3: string } }) {
                   </span>
                 </li>
                 <li>
-                  <span className="font-semibold">Region:</span>{" "}
+                  <span className="font-semibold inline-block mb-2">Region:</span>{" "}
                   <span className="font-light">{filtered[0].region}</span>
                 </li>
                 <li>
-                  <span className="font-semibold">Sub Region:</span>{" "}
+                  <span className="font-semibold inline-block mb-2">Sub Region:</span>{" "}
                   <span className="font-light">{filtered[0].subregion}</span>
                 </li>
                 <li>
-                  <span className="font-semibold">Capital:</span>{" "}
+                  <span className="font-semibold inline-block mb-2">Capital:</span>{" "}
                   <span className="font-light">{filtered[0].capital}</span>
                 </li>
               </ul>
               <ul>
                 <li>
-                  <span className="font-semibold">Top Level Domain:</span>{" "}
+                  <span className="font-semibold inline-block mb-2">Top Level Domain:</span>{" "}
                   <span className="font-light">{filtered[0].tld}</span>
                 </li>
                 <li>
-                  <span className="font-semibold">Currencies:</span>{" "}
+                  <span className="font-semibold inline-block mb-2">Currencies:</span>{" "}
                   <Currencies />
                 </li>
                 <li>
-                  <span className="font-semibold">Languages:</span>{" "}
+                  <span className="font-semibold inline-block mb-2">Languages:</span>{" "}
                   <Languages />
                 </li>
               </ul>
             </div>
-            <div>
-              <span className="font-semibold">Border Countries:</span>{" "}
+            <div className="mt-10">
+              <span className="font-semibold block md:inline-block">Border Countries:</span>{" "}
               <Neighbours />
             </div>
           </div>
