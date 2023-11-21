@@ -100,9 +100,9 @@ function Page({ params }: { params: { cca3: string } }) {
         <Switcher />
       </header>
       <main className="mx-2 md:mx-16 p-5 text-sm text-[#111517] dark:text-white">
-        <div>
-          <FontAwesomeIcon icon={faArrowLeft} />
-          <Link href="/" className="block-inline bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white py-1.5 px-10">Back</Link>
+        <div className="mt-10">
+          <FontAwesomeIcon icon={faArrowLeft} className="relative z-10 ml-8" />
+          <Link href="/" className="block-inline bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white py-[8px] pl-[50px] pr-10 relative z-0 -ml-[45px] rounded shadow-md">Back</Link>
         </div>
         <div className="flex flex-col md:flex-row mt-20">
           <div className="md:basis-1/2">
