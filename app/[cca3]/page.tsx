@@ -45,6 +45,22 @@ function Page({ params }: { params : { cca3: string }}) {
         }
     }
 
+    function Neighbours() {
+        if (filtered[0].borders) {
+            const temporary4= Object.keys(filtered[0].borders);
+            if (temporary4.length > 1) {
+                return (
+                    Object.values(filtered[0].borders).map((name, index) => {
+                        return <Link key={index} href={Object.values(filtered[0].borders)[index]}>{Object.values(filtered[0].borders)[index]}</Link>
+                    }))
+            } else {
+                return <Link href={Object.values(filtered[0].borders)[0]}>{Object.values(filtered[0].borders)[0]}</Link>;
+            }
+        } else {
+            return <span className="font-light">None</span>
+        }
+    }
+
     return (
         <>
         <header className="w-full flex bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white p-5 justify-between shadow-md">
@@ -83,7 +99,7 @@ function Page({ params }: { params : { cca3: string }}) {
                     </ul>
                 </div>
                 <div>
-                <span className="font-semibold">Border Countries:</span>
+                <span className="font-semibold">Border Countries:</span> <Neighbours />
                 </div>
             </div>
         </div>
