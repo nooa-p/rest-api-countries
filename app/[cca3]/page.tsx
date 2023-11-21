@@ -3,11 +3,36 @@ import { Switcher } from "../switcher";
 // fetching from local file
 import data from "../../json/all.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faFilterCircleDollar } from "@fortawesome/free-solid-svg-icons";
 import Link from 'next/link';
 
-export default function Page({ params }: { params : { cca3: string }}) {
+function Page({ params }: { params : { cca3: string }}) {
     const filtered = data.filter((el) => el.cca3.includes(params.cca3));
+
+    function NativeNames() {
+        const temporary = Object.keys(filtered[0].name.nativeName);
+        if (temporary.length > 1) {
+            return (
+                Object.values(filtered[0].name.nativeName).map((name, index) => {
+                    return <span key={index} className="font-light">{(index ? ', ' : '') + Object.values(filtered[0].name.nativeName)[index].common}</span>
+                }))
+        } else {
+            return <span className="font-light">{Object.values(filtered[0].name.nativeName)[0].common}</span>;
+        }
+    }
+
+    function Currencies() {
+        const temporary2 = Object.keys(filtered[0].currencies);
+        if (temporary2.length > 1) {
+            return (
+                Object.values(filtered[0].currencies).map((name, index) => {
+                    return <span key={index} className="font-light">{(index ? ', ' : '') + Object.values(filtered[0].currencies)[index].name}</span>
+                }))
+        } else {
+            return <span className="font-light">{Object.values(filtered[0].currencies)[0].name}</span>;
+        }
+    }
+
     return (
         <>
         <header className="w-full flex bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white p-5 justify-between shadow-md">
@@ -29,7 +54,8 @@ export default function Page({ params }: { params : { cca3: string }}) {
                 <h1>{filtered[0].name.common}</h1>
                 <div className="flex flex-col md:flex-row">
                     <ul>
-                        <li><span className="font-semibold">Native Name:</span> <span className="font-light"></span></li>
+                        <li><span className="font-semibold">Native Names:</span> <NativeNames />
+                        </li>
                         <li><span className="font-semibold">Population:</span> <span className="font-light">{filtered[0].population
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span></li>
@@ -39,7 +65,8 @@ export default function Page({ params }: { params : { cca3: string }}) {
                     </ul>
                     <ul>
                     <li><span className="font-semibold">Top Level Domain:</span> <span className="font-light">{filtered[0].tld}</span></li>
-                    <li><span className="font-semibold">Currencies:</span> <span className="font-light"></span></li>
+                    <li><span className="font-semibold">Currencies:</span> <Currencies />
+                        </li>
                     <li><span className="font-semibold">Languages:</span> <span className="font-light"></span></li>
                     </ul>
                 </div>
@@ -52,3 +79,5 @@ export default function Page({ params }: { params : { cca3: string }}) {
         </>
     )
 }
+
+export default Page;
