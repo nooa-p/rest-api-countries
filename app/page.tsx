@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 import { Switcher } from "./switcher";
-// fetching from local file
-// import data from "../json/all.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Link from 'next/link';

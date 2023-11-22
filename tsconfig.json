@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "lib": [
+      "ES2017",
       "dom",
       "dom.iterable",
       "esnext"

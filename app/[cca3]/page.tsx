@@ -40,14 +40,14 @@ function Page({ params }: { params: { cca3: string } }) {
         return (
           <span key={index} className="font-light">
             {(index ? ", " : "") +
-              Object.values(filtered[0].name.nativeName)[index].common}
+              Object.values(filtered[0].name.nativeName)[index]['common']}
           </span>
         );
       });
     } else {
       return (
         <span className="font-light">
-          {Object.values(filtered[0].name.nativeName)[0].common}
+          {Object.values(filtered[0].name.nativeName)[0]['common']}
         </span>
       );
     }
@@ -60,14 +60,14 @@ function Page({ params }: { params: { cca3: string } }) {
         return (
           <span key={index} className="font-light">
             {(index ? ", " : "") +
-              Object.values(filtered[0].currencies)[index].name}
+              Object.values(filtered[0].currencies)[index]['name']}
           </span>
         );
       });
     } else {
       return (
         <span className="font-light">
-          {Object.values(filtered[0].currencies)[0].name}
+          {Object.values(filtered[0].currencies)[0]['name']}
         </span>
       );
     }
@@ -75,6 +75,7 @@ function Page({ params }: { params: { cca3: string } }) {
 
   function Languages() {
     const temporary3 = Object.keys(filtered[0].languages);
+    const one: any = Object.values(filtered[0].languages)[0]
     if (temporary3.length > 1) {
       return Object.values(filtered[0].languages).map((name, index) => {
         return (
@@ -86,27 +87,28 @@ function Page({ params }: { params: { cca3: string } }) {
     } else {
       return (
         <span className="font-light">
-          {Object.values(filtered[0].languages)[0]}
+          {one}
         </span>
       );
     }
   }
 
   function Neighbours() {
+    const value: any = Object.values(filtered[0].borders)
     if (filtered[0].borders) {
       const temporary4 = Object.keys(filtered[0].borders);
       if (temporary4.length > 1) {
         return Object.values(filtered[0].borders).map((name, index) => {
           return (
             <Link key={index} href={Object.values(filtered[0].borders)[index]} className="inline-block bg-white dark:bg-[#2B3945] px-5 py-1 mr-3 shadow-lg mt-3 md:mt-0">
-              {Object.values(filtered[0].borders)[index]}
+              {value[index]}
             </Link>
           );
         });
       } else {
         return (
           <Link href={Object.values(filtered[0].borders)[0]} className="inline-block bg-white dark:bg-[#2B3945] px-5 py-1 mr-3 shadow-lg mt-3 md:mt-0">
-            {Object.values(filtered[0].borders)[0]}
+            {value[0]}
           </Link>
         );
       }
