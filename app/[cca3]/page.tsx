@@ -1,12 +1,36 @@
 "use client";
+import { GET } from '../api/route';
+import { useState } from 'react'
 import { Switcher } from "../switcher";
-// fetching from local file
-import data from "../../json/all.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 function Page({ params }: { params: { cca3: string } }) {
+  const [data, setData] = useState<any>();
+  const [loading, setLoading] = useState(true);
+
+  GET().then((data) => {
+    setData(data);
+    setLoading(false);
+  })
+
+  if(loading) {
+    return (
+      <>
+      <header className="w-full flex bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white p-5 justify-between shadow-md">
+        <h1 className="font-extrabold text-xl ml-2 md:ml-16">
+          Where in the world?
+        </h1>
+        <Switcher />
+      </header>
+      <main className="mx-2 md:mx-16 p-5 text-sm text-[#111517] dark:text-white">
+        Loading...
+      </main>
+      </>
+    )
+  }
+
   const filtered = data.filter((el) => el.cca3.includes(params.cca3));
 
   function NativeNames() {
