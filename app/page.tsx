@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Link from 'next/link';
 import { GET } from './api/route';
 
-const Home = () => {
+function Page({}) {
   const [search, setSearch] = useState("");
   const [rFilter, setRFilter] = useState("");
   const [data, setData] = useState<any>();
@@ -137,4 +137,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Page;

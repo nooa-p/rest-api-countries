@@ -9,10 +9,12 @@ import Link from "next/link";
 function Page({ params }: { params: { cca3: string } }) {
   const [data, setData] = useState<any>();
   const [loading, setLoading] = useState(true);
+  const [filtered, setFiltered] = useState<any>();
 
   GET().then((data) => {
     setData(data);
     setLoading(false);
+    setFiltered(data.filter((el) => el.cca3.includes(params.cca3)))
   })
 
   if(loading) {
@@ -31,9 +33,8 @@ function Page({ params }: { params: { cca3: string } }) {
     )
   }
 
-  const filtered = data.filter((el) => el.cca3.includes(params.cca3));
-
   function NativeNames() {
+    if(!loading) {
     const temporary = Object.keys(filtered[0].name.nativeName);
     if (temporary.length > 1) {
       return Object.values(filtered[0].name.nativeName).map((name, index) => {
@@ -52,8 +53,10 @@ function Page({ params }: { params: { cca3: string } }) {
       );
     }
   }
+  }
 
   function Currencies() {
+    if(!loading) {
     const temporary2 = Object.keys(filtered[0].currencies);
     if (temporary2.length > 1) {
       return Object.values(filtered[0].currencies).map((name, index) => {
@@ -72,8 +75,10 @@ function Page({ params }: { params: { cca3: string } }) {
       );
     }
   }
+  }
 
   function Languages() {
+    if(!loading) {
     const temporary3 = Object.keys(filtered[0].languages);
     const one: any = Object.values(filtered[0].languages)[0]
     if (temporary3.length > 1) {
@@ -92,10 +97,12 @@ function Page({ params }: { params: { cca3: string } }) {
       );
     }
   }
+  }
 
   function Neighbours() {
-    const value: any = Object.values(filtered[0].borders)
-    if (filtered[0].borders) {
+    if(!loading) {
+    if (filtered[0].borders !== undefined) {
+      const value: any = Object.values(filtered[0].borders)
       const temporary4 = Object.keys(filtered[0].borders);
       if (temporary4.length > 1) {
         return Object.values(filtered[0].borders).map((name, index) => {
@@ -115,6 +122,7 @@ function Page({ params }: { params: { cca3: string } }) {
     } else {
       return <span className="font-light">None</span>;
     }
+  }
   }
 
   return (
