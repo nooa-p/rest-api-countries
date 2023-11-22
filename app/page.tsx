@@ -1,26 +1,23 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Switcher } from "./switcher";
 // fetching from local file
-import data from "../json/all.json";
+// import data from "../json/all.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Link from 'next/link';
+import { GET } from './api/route';
 
 const Home = () => {
-  // fetching from api
   const [search, setSearch] = useState("");
   const [rFilter, setRFilter] = useState("");
-  // const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState<any>();
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   fetch('https://restcountries.com/v3.1/all')
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data);
-  //       setLoading(false);
-  //     })
-  // }, []);
+  GET().then((data) => {
+    setData(data);
+    setLoading(false);
+  })
 
   const searchFilter = (array) => {
     if (search !== "" && rFilter !== "") {
@@ -45,7 +42,21 @@ const Home = () => {
 
   const filtered = searchFilter(data);
 
-  // if(isLoading) return <p>Loading...</p>
+  if(loading) {
+    return (
+      <>
+      <header className="w-full flex bg-white dark:bg-[#2B3945] text-[#111517] dark:text-white p-5 justify-between shadow-md">
+        <h1 className="font-extrabold text-xl ml-2 md:ml-16">
+          Where in the world?
+        </h1>
+        <Switcher />
+      </header>
+      <main className="mx-2 md:mx-16 p-5 text-sm text-[#111517] dark:text-white">
+        Loading...
+      </main>
+      </>
+    )
+  }
 
   return (
     <>
