@@ -104,20 +104,23 @@ function Page({ params }: { params: { cca3: string } }) {
   function Neighbours() {
     if(!loading) {
     if (filtered[0].borders !== undefined) {
+      const borders = data.filter(
+        (country) => (Object.values(filtered[0].borders)).some(value => country.cca3.includes(value))
+      )
       const value: any = Object.values(filtered[0].borders)
       const temporary4 = Object.keys(filtered[0].borders);
       if (temporary4.length > 1) {
         return Object.values(filtered[0].borders).map((name, index) => {
           return (
-            <Link key={index} href={Object.values(filtered[0].borders)[index]} className="inline-block bg-white dark:bg-[#2B3945] px-5 py-1 mr-3 shadow-lg mt-3 md:mt-0">
-              {value[index]}
+            <Link key={index} href={Object.values(filtered[0].borders)[index]} className="inline-block bg-white dark:bg-[#2B3945] px-5 py-1 mr-3 shadow-lg mt-3">
+              {borders[index].name.common}
             </Link>
           );
         });
       } else {
         return (
-          <Link href={Object.values(filtered[0].borders)[0]} className="inline-block bg-white dark:bg-[#2B3945] px-5 py-1 mr-3 shadow-lg mt-3 md:mt-0">
-            {value[0]}
+          <Link href={Object.values(filtered[0].borders)[0]} className="inline-block bg-white dark:bg-[#2B3945] px-5 py-1 mr-3 shadow-lg mt-3">
+            {borders[0].name.common}
           </Link>
         );
       }
@@ -188,8 +191,8 @@ function Page({ params }: { params: { cca3: string } }) {
                 </li>
               </ul>
             </div>
-            <div className="mt-10">
-              <span className="font-semibold block md:inline-block md:mr-3">Border Countries:</span>{" "}
+            <div className="mt-7">
+              <span className="font-semibold block md:inline-block md:mr-3 mt-3">Border Countries:</span>{" "}
               <Neighbours />
             </div>
           </div>
