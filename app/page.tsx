@@ -4,7 +4,7 @@ import { Switcher } from "./switcher";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Link from 'next/link';
-import { GET } from './api/route';
+import { GetData } from './fetcher';
 
 function Page({}) {
   const [search, setSearch] = useState("");
@@ -12,10 +12,12 @@ function Page({}) {
   const [data, setData] = useState<any>();
   const [loading, setLoading] = useState(true);
 
-  GET().then((data) => {
-    setData(data);
-    setLoading(false);
-  })
+  if(loading) {
+    GetData().then((data) => {
+      setData(data);
+      setLoading(false);
+    })
+  }
 
   const searchFilter = (array) => {
     if (search !== "" && rFilter !== "") {

@@ -1,5 +1,5 @@
 "use client";
-import { GET } from '../api/route';
+import { GetData } from '../fetcher';
 import { useState } from 'react'
 import { Switcher } from "../switcher";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,11 +11,13 @@ function Page({ params }: { params: { cca3: string } }) {
   const [loading, setLoading] = useState(true);
   const [filtered, setFiltered] = useState<any>();
 
-  GET().then((data) => {
+  if(loading) {
+    GetData().then((data) => {
     setData(data);
     setLoading(false);
     setFiltered(data.filter((el) => el.cca3.includes(params.cca3)))
-  })
+    })
+  }
 
   if(loading) {
     return (
